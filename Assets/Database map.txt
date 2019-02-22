@@ -1,0 +1,18 @@
+CREATE TABLE `main_cat` (
+  `MCatID` varchar(5) NOT NULL,
+  `MCatName` varchar(225) NOT NULL,
+  PRIMARY KEY (`MCatID`),
+  UNIQUE KEY `ClassificationName_UNIQUE` (`MCatName`)
+)
+
+
+
+
+CREATE TABLE `sub_cat` 
+( `SCatID` varchar(5) NOT NULL, 
+`SCatName` varchar(225) NOT NULL,
+ `MCatID` varchar(5) NOT NULL,
+ PRIMARY KEY (`SCatID`),
+ UNIQUE KEY `SCatName_UNIQUE` (`SCatName`),
+ KEY `MCatID_idx` (`MCatID`), CONSTRAINT `MCatSC` 
+FOREIGN KEY (`MCatID`) REFERENCES `main_cat` (`mcatid`) )
